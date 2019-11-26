@@ -11,7 +11,7 @@
                 <div  class="alert">
                     <div id="productsForm">
                         <input type="text" id="product1" class="form-control productBarcodeField" />
-                        <input id="number1" type="number" class="form-control total" value="1" />
+                        <input id="number1" type="number" class="form-control " value="1" />
                     </div>
                     <button type="submit" class="form-control" id="checkOutBtn">Check out</button>
                 </div>
@@ -53,6 +53,7 @@
         $(document).ready(function (event) {
 
             var product = 1;
+            var totalCost;
 
             $(document).on('keypress','.productBarcodeField', function (event) {
                 if (event.keyCode == 13){
@@ -70,7 +71,7 @@
                 html += '<input type="number" class="form-control" value="1" id="number'+product+'" />';
                 html += '</div>';
 
-                $("#productsForm").append(html);
+                $("#productsForm").prepend(html);
 
                 focusLastProduct();
 
@@ -102,8 +103,7 @@
                         html += '<td>'+productNumber+'</td>';
 
                         var total = productNumber * response.price_to_be_sold;
-                        html += '<td class="total" data-price="'+total+'">'+total+'</td>';
-
+                        html += '<td class="totalPrice" data-price="'+total+'">'+total+'</td>';
 
                         $("#saleRows").append(html);
 
@@ -114,9 +114,10 @@
                 });
 
             }
-            
-            function repaintSalesTable() {
 
+
+
+            function repaintSalesTable() {
                 $("#saleRows").empty();
                 for (var i=1; i<product; i++){
                     var productCode = $("#product"+i).val();
@@ -129,12 +130,13 @@
                         }
                     }
                 }
+                var sum = 0;
+                $("#saleRows tr").each(function () {
+                    sum += $(this).find(".totalPrice").html();
+                });
+                console.log(sum);
+
             }
-            
-            
-
-
-
 
         });
     </script>
