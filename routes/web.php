@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/invoice/thisYear', 'InvoiceController@thisYear')->name('invoice.thisYear');
+
+Route::get('/invoice/thisMonth', 'InvoiceController@thisMonth')->name('invoice.thisMonth');
+
+Route::get('/invoice/today', 'InvoiceController@today')->name('invoice.today');
+Route::get('/invoice/thisWeek', 'InvoiceController@thisWeek')->name('invoice.thisWeek');
+Route::get('/invoice/show/{id}', 'InvoiceController@show')->name('invoice.show');
+
+Route::get('/invoice', 'InvoiceController@index')->name('invoice.store');
 
 Route::get('/invoice/store', 'InvoiceController@storeInvoice')->name('invoice.store');
 

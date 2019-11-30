@@ -18,7 +18,6 @@ class CreateSalesTable extends Migration
             $table->string('product_code');
             $table->integer('number');
             $table->integer('invoice_id');
-            $table->timestamps();
           });
     }
 
