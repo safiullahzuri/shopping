@@ -31,6 +31,6 @@ class AssignAuthoritiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('authorities');
+        Schema::dropIfExists('authorities');
     }
 }

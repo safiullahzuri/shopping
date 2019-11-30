@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddBrandToProductsTable extends Migration
+class CreateInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddBrandToProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('brand');
+        Schema::create('invoices', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +26,6 @@ class AddBrandToProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('invoices');
     }
 }

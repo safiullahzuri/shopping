@@ -19,6 +19,7 @@ class CreateUserTable extends Migration
             $table->string('password');
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('email')->nullable();
             $table->string('avatar')->nullable()->default('image.jpg');
             $table->string('phoneNo');
             $table->boolean('isAdmin')->default(0);
@@ -32,6 +33,6 @@ class CreateUserTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::dropIfExists('users');
     }
 }

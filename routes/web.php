@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 
+Route::get('/invoice/store', 'InvoiceController@storeInvoice')->name('invoice.store');
+
 Route::get('/sales/product', 'SalesController@getProduct')->name('sales.product');
 
 Route::get('/sales/price', 'SalesController@getPrice')->name('sales.price');
